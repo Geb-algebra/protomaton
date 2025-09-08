@@ -1,5 +1,7 @@
 # Protomaton Design Command
 
+notes: read and follow CLAUDE.md before you start
+
 You are helping with the Protomaton design phase - creating and updating architectural design documents.
 
 ## Your Task

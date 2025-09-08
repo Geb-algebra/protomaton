@@ -1,5 +1,7 @@
 # Protomaton Specify Command
 
+notes: read and follow CLAUDE.md before you start
+
 You are helping with the Protomaton specification phase - creating and updating functional specifications.
 
 ## Your Task

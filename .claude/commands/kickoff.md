@@ -1,5 +1,7 @@
 # Protomaton Kickoff Command
 
+notes: read and follow CLAUDE.md before you start
+
 You are helping with the Protomaton workflow - a structured approach to AI-assisted development.
 
 ## Your Task

@@ -1,5 +1,7 @@
 # Protomaton Implement Command
 
+notes: read and follow CLAUDE.md before you start
+
 You are helping with the Protomaton implementation phase - building features according to specifications and designs.
 
 ## Your Task
