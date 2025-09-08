@@ -105,6 +105,65 @@ docs/
 - 実装状況は都度 `ai/notes.md` に書かせる。(1)これまで何を実装したか (2)次何をするか (3)known issues。
 - 実装が完了したら、変更履歴書をFixedにして、ブランチをマージし完了。
 
+## templates
+
+note that claude command files should contain only the process of the command, not a guideline for writing related documents. the guideline should be included in the templates so that AIs can fix the documents properly afterwards.
+
+each template should include an execution flow and guidelines for filling out the template itself. like:
+
+===============================================================
+## Execution Flow (main)
+```
+1. Parse user description from Input
+   → If empty: ERROR "No feature description provided"
+2. Extract key concepts from description
+   → Identify: actors, actions, data, constraints
+3. For each unclear aspect:
+   → Mark with [NEEDS CLARIFICATION: specific question]
+4. Fill User Scenarios & Testing section
+   → If no clear user flow: ERROR "Cannot determine user scenarios"
+5. Generate Functional Requirements
+   → Each requirement must be testable
+   → Mark ambiguous requirements
+6. Identify Key Entities (if data involved)
+7. Run Review Checklist
+   → If any [NEEDS CLARIFICATION]: WARN "Spec has uncertainties"
+   → If implementation details found: ERROR "Remove tech details"
+8. Return: SUCCESS (spec ready for planning)
+```
+
+---
+
+## ⚡ Quick Guidelines
+- ✅ Focus on WHAT users need and WHY
+- ❌ Avoid HOW to implement (no tech stack, APIs, code structure)
+- 👥 Written for business stakeholders, not developers
+
+### Section Requirements
+- **Mandatory sections**: Must be completed for every feature
+- **Optional sections**: Include only when relevant to the feature
+- When a section doesn't apply, remove it entirely (don't leave as "N/A")
+
+### For AI Generation
+When creating this spec from a user prompt:
+1. **Mark all ambiguities**: Use [NEEDS CLARIFICATION: specific question] for any assumption you'd need to make
+2. **Don't guess**: If the prompt doesn't specify something (e.g., "login system" without auth method), mark it
+3. **Think like a tester**: Every vague requirement should fail the "testable and unambiguous" checklist item
+4. **Common underspecified areas**:
+   - User types and permissions
+   - Data retention/deletion policies  
+   - Performance targets and scale
+   - Error handling behaviors
+   - Integration requirements
+   - Security/compliance needs
+
+---
+===============================================================
+
+these flow and guideline varies across the templates but **Mark all ambiguities** and **Don't guess** should be included in every template.
+
+## notes
+
 I dont want to build this app with protomaton, but want to make a template project to build any apps with 
   protomaton. so i want to set up (1)workflow commands, (2)shell script for kickoff, specify and design which creates a new document with a template and (3) the
    docs templates
