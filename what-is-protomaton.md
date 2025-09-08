@@ -25,7 +25,7 @@ frizz-stackのツールキット (React Router, Shadcn/ui, Zod) の使い方や�
 - AIが一度間違えたところなど、基本設計書だけでは実装を再現しきれない箇所を補強する
 
 
-### UI基本設計書 (`ui/[page name]/architecture.md`):
+### アプリ基本設計書 (`app/[page name]/architecture.md`):
 
 - 画面ごとに作成する。永続的にメンテナンスする
 - 書くこと: (React Router / Shadcn/uiの利用を前提として) 
@@ -33,14 +33,15 @@ frizz-stackのツールキット (React Router, Shadcn/ui, Zod) の使い方や�
     - 実装するroute Module以外のコンポーネントのリスト。コンポーネントは基本的にRoute Module内に複数実装すれば良く、2つ以上のRouteで使うコンポーネントのみここにリストされる。
     - これらのコンポーネントをどう組み合わせて画面を作るか。 ascii diagramを使ったUIワイヤフレームで示す。
     - 利用するライブラリ (React Router, Shadcn/ui, Zod 以外)
-- 書かないこと: ドメインやUI以外の設計
+    - ドメイン層に置くべきでないアプリケーション層の責務のロジックの内容および動作フロー
+- 書かないこと: ドメインやインフラなどアプリケーション層以外の設計
 - 末尾に、constitution.mdおよびreact-router-law.mdの関連する条項を守っていることを確認するチェックリストを用意
 - 技術がわかる人はここをレビューすることで、実装前に大きな間違いをただせるように。 また、AIがこれを見るだけで大筋の方針を間違えないように。
 
-### UI詳細設計書 (`ui/[page name]/details/[description].md`):
+### アプリ詳細設計書 (`app/[page name]/details/[description].md`):
 
 - 画面ごとに、必要に応じて0 ~ 任意の数作成する。永続的にメンテナンスする
-- UI基本設計書の記載事項のうち、比較検討などが必要な難しい決定のArchitectural decision record
+- アプリ基本設計書の記載事項のうち、比較検討などが必要な難しい決定のArchitectural decision record
 - AIが一度間違えたところなど、基本設計書だけでは実装を再現しきれない箇所を補強する
 
 ### システム基本設計書 (`system/[item name]/architecture.md`):
@@ -77,7 +78,7 @@ docs/
 │         └── details
 │              ├── [key-decision-1].md
 │              ├── ...
-├── ui
+├── app
 │    └── [page name]
 │         ├── architecture.md
 │         └── details

@@ -17,7 +17,7 @@
 5. Identify complex business logic (skip simple CRUD)
    → Focus on calculations, constraints, workflows
 6. Define domain events for cross-boundary communication
-7. Run Constitution compliance checklist
+7. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
    → If violations found: ERROR "Fix constitution compliance"
 8. Return: SUCCESS (domain design ready for implementation)
 ```
@@ -116,10 +116,10 @@ When creating this domain design:
 ## Constitution Compliance Checklist
 <!-- Verify adherence to constitution.md principles -->
 - [ ] Domain objects are properly encapsulated
-- [ ] Business logic is contained within the domain layer
+- [ ] Business logic is contained within the domain layer as services
+- [ ] Simple CRUD operations handled by Factories and Repositories, not services
 - [ ] External dependencies are abstracted through interfaces
 - [ ] Domain events are used for cross-boundary communication
-- [ ] [Add other constitution.md requirements as applicable]
 
 ---
 *This document defines the core business domain model and logic. It should be reviewable by business stakeholders to verify domain correctness.*

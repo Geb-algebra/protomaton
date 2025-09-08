@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(./scripts/kickoff.sh:*)",
+      "Bash(./scripts/specify.sh:*)",
+      "Bash(./scripts/design.sh:*)"
     ],
     "deny": []
   }
