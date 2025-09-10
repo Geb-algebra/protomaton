@@ -74,7 +74,7 @@ When creating this change history:
 - [ ] **item-name/architecture.md** - New/Update - Brief description of changes needed
 
 ## Notes
-<!-- Any additional context, constraints, or considerations -->
+<!-- Any additional context, constraints, or considerations. Do Not include what is specified by constitution/laws -->
 
 ---
 *This document tracks the planned documentation changes for this development session. Status will change to "Fixed" when development is complete.*
