@@ -3,7 +3,6 @@
 **Created**: {{DATE}}  
 **Last Updated**: {{DATE}}
 
-===============================================================
 ## Execution Flow (System Design)
 ```
 1. Parse requirements from specifications and domain/UI designs
@@ -48,7 +47,6 @@ When creating this system design:
    - Deployment and infrastructure needs
 
 ---
-===============================================================
 
 ## Overview
 <!-- Brief description of this system component and its purpose -->

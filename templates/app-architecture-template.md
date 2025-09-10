@@ -109,15 +109,6 @@ When creating this app design:
 ## Technology Stack
 <!-- Libraries beyond React Router, Shadcn/ui, and Zod -->
 
-### UI Libraries
-- **Library Name**: [Purpose and rationale]
-
-### State Management  
-- **Solution**: [State management approach and rationale]
-
-### Additional Tools
-- **Tool Name**: [Purpose and rationale]
-
 ## Application Logic
 <!-- Non-domain orchestration logic and workflows -->
 

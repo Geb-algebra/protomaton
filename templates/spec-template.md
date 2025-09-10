@@ -3,7 +3,6 @@
 **Created**: {{DATE}}  
 **Last Updated**: {{DATE}}
 
-===============================================================
 ## Execution Flow (Specification Creation)
 ```
 1. Parse user description from change history/input
@@ -50,7 +49,6 @@ When creating this spec from a user prompt:
    - Security/compliance needs
 
 ---
-===============================================================
 
 ## Primary User Story
 <!-- The main value proposition from the user's perspective -->
