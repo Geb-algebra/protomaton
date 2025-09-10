@@ -3,7 +3,7 @@
 **Created**: {{DATE}}  
 **Last Updated**: {{DATE}}
 
-## Execution Flow (Specification Creation)
+## Execution Flow
 ```
 1. Parse user description from change history/input
    → If empty: ERROR "No feature description provided"
@@ -33,7 +33,7 @@
 ### Section Requirements
 - **Mandatory sections**: Must be completed for every feature
 - **Optional sections**: Include only when relevant to the feature
-- When a section doesn't apply, remove it entirely (don't leave as "N/A")
+- When a section doesn't apply, leave it as "N/A" for future potential application
 
 ### For AI Generation
 When creating this spec from a user prompt:
@@ -57,15 +57,8 @@ As a [user type], I want [functionality] so that [benefit].
 ## Acceptance Scenarios
 <!-- Specific testable scenarios that define success -->
 
-### Scenario 1: [Name]
-**Given** [initial conditions]  
-**When** [user action]  
-**Then** [expected outcome]
-
-### Scenario 2: [Name]
-**Given** [initial conditions]  
-**When** [user action]  
-**Then** [expected outcome]
+1. **Given** [initial state], **When** [action], **Then** [expected outcome]
+2. **Given** [initial state], **When** [action], **Then** [expected outcome]
 
 ## Edge Cases
 <!-- Error conditions, boundary cases, and failure modes -->

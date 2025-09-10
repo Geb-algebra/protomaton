@@ -10,9 +10,8 @@
 2. Identify technical concerns not covered by domain/UI layers
    → Persistence, performance, security, integration
 3. For each unclear technical decision:
-   → Mark with [NEEDS CLARIFICATION: specific question]
-4. Research and select appropriate technologies
-   → Database, caching, message queues, etc.
+   → Mark with [NEEDS RESEARCH: specific question]
+4. Identify necessary technologies (Database, caching, message queues, etc.) for this design that requires some tools or libraries (PostgresQL, Redis, etc.). Mark [NEEDS RESEARCH] to a technology if the tools for it is not specified or easily selectable 
 5. Design system architecture and data flow
 6. Plan performance, security, and monitoring strategies
 7. Run compliance checklists (Constitution + React Router Law)
@@ -32,6 +31,7 @@
 - **Architecture Overview**: Always required - system component diagram
 - **Data Architecture**: Required when persistence is involved
 - **Performance/Security**: Optional - based on non-functional requirements
+- When a section doesn't apply, leave it as "N/A" for future potential application
 
 ### For AI Generation
 When creating this system design:

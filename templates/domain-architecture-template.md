@@ -34,6 +34,8 @@
 - **Business Logic**: Required only for complex operations (skip CRUD)
 - **Validation Rules**: Required when business constraints exist
 - **Domain Events**: Optional - for cross-boundary communication
+- When a section doesn't apply, leave it as "N/A" for future potential application
+
 
 ### For AI Generation
 When creating this domain design:

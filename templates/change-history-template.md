@@ -4,7 +4,7 @@
 **Created**: {{DATE}}  
 **Description**: {{DESCRIPTION}}
 
-## Execution Flow (Change Planning)
+## Execution Flow
 ```
 1. Parse user description and project context
    → If description too vague: ERROR "Need clearer feature description"

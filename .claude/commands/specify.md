@@ -11,7 +11,7 @@ Create or update specification documents based on the current change history doc
 1. **Read change history**: Find the current "Live" change history document in docs/changes/
 2. **Create/update specs**: For each specification mentioned in the change history:
    - Run `./scripts/specify.sh [spec-name]` to create from template if needed
-   - Update the specification document with:
+   - Complete the "Execution Flow" section in the specification document with:
      - Primary user story
      - Acceptance scenarios
      - Edge cases

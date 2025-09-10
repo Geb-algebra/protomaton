@@ -3,8 +3,7 @@
 **Created**: {{DATE}}  
 **Last Updated**: {{DATE}}
 
-===============================================================
-## Execution Flow (App Design)
+## Execution Flow
 ```
 1. Parse requirements from specifications and domain designs
    → If no related specs: ERROR "App design requires specifications"
@@ -17,10 +16,10 @@
 5. Identify shared vs route-specific components
 6. Design application layer logic (non-domain orchestration)
 7. Create ASCII wireframes for layout structure
-8. Select additional libraries beyond core stack
-9. Run compliance checklists (Constitution + React Router Law)
+8. Identify functionalities that require additional libraries beyond core stack. Mark [NEEDS RESEARCH] to a functionality if the library for it is not specified or easily selectable.
+10. Run compliance checklists (Constitution + React Router Law)
    → If violations found: ERROR "Fix compliance issues"
-10. Return: SUCCESS (App design ready for implementation)
+11. Return: SUCCESS (App design ready for implementation)
 ```
 
 ---
@@ -34,8 +33,9 @@
 - **Route Modules**: Always required - define React Router structure
 - **UI Wireframe**: Always required - show component layout
 - **Application Logic**: Required when non-domain orchestration logic exists
-- **Shared Components**: Required when components are reused across routes
+- **Shared Components**: Required when you need components shared across routes
 - **Technology Stack**: Optional - only for libraries beyond core stack
+- When a section doesn't apply, leave it as "N/A" for future potential application
 
 ### For AI Generation
 When creating this app design:
@@ -52,7 +52,6 @@ When creating this app design:
    - Application workflow orchestration logic
 
 ---
-===============================================================
 
 ## Overview
 <!-- Brief description of this page/feature and its purpose -->
