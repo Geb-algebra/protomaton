@@ -11,7 +11,7 @@ Create or update design documents (domain, app, system) based on the current cha
 1. **Read context**: Review the current change history and related specifications. if specifications do not exist,  ERROR "No feature spec provided"
 2. **Create/update basic designs**: For each design area mentioned:
    - Run `./scripts/design.sh [type] [name]` to create from template if needed
-   - Complete the "Execution Flow" section in the basic architecture documents following the guidelines below
+   - Fill in the template following the "Execution Flow" section in the basic architecture documents following the guidelines below
 3. **Create/update detailed designs**: When complex decisions need documentation:
    - Run `./scripts/design-detail.sh [type] [name] [description]` to create detailed design documents
    - Document architectural decision records and implementation complexities

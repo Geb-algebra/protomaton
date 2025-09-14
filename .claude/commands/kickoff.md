@@ -12,7 +12,7 @@ You are helping with the Protomaton workflow - a structured approach to AI-assis
 ## Process
 1. **Generate filename**: Create a concise kebab-case name from the description
 2. **Run kickoff script**: Execute `./scripts/kickoff.sh [short_name] "[description]"`
-3. **Complete Execution Flow**: Complete the "Execution Flow" section in the created change history document with:
+3. **Execute the Execution Flow**: Fill in the template following the "Execution Flow" section in the created change history document with:
    - Clear overview of what needs to be changed
    - Which existing specs/designs need updates
    - Which new specs/designs need creation
