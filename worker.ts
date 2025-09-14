@@ -1,19 +1,23 @@
-// worker.ts
 import { createRequestHandler } from "react-router";
-import server from "./app/server";
 
-const build = await import("virtual:react-router/server-build");
-const requestHandler = createRequestHandler(build, import.meta.env.MODE);
-
-server.get("*", (c) =>
-	requestHandler(c.req.raw, {
+declare module "react-router" {
+	export interface AppLoadContext {
 		cloudflare: {
-			env: c.env,
-			ctx: Object.assign(c.executionCtx, { props: undefined }),
-		},
-	}),
+			env: Env;
+			ctx: ExecutionContext;
+		};
+	}
+}
+
+const requestHandler = createRequestHandler(
+	() => import("virtual:react-router/server-build"),
+	import.meta.env.MODE,
 );
 
 export default {
-	fetch: server.fetch,
-};
+	async fetch(request, env, ctx) {
+		return requestHandler(request, {
+			cloudflare: { env, ctx },
+		});
+	},
+} satisfies ExportedHandler<Env>;

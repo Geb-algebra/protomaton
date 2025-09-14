@@ -27,6 +27,7 @@ export default function Home() {
 				}}
 			/>
 			<MoonIcon size={16} />
+			hoge
 		</div>
 	);
 }
