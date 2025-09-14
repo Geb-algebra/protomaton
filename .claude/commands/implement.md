@@ -8,8 +8,8 @@ You are helping with the Protomaton implementation phase - building features acc
 Implement features following the current specifications and design documents, updating implementation notes as you progress.
 
 ## Process
-1. **Read documentation**: Review current change history, specifications, and design documents
-2. **Create/update notes**: Initialize or update `ai/notes.md` with:
+1. **Read documentation**: Review change history specified by input. if not specified, request it. Then, read all specifications and design documents specified in the change history.
+2. . **Create/update notes**: Initialize or update `ai/notes.md` with:
    - What has been implemented so far
    - What you plan to implement next  
    - Known issues and blockers
@@ -20,7 +20,7 @@ Implement features following the current specifications and design documents, up
 ## Implementation Guidelines
 - **Follow existing patterns**: Examine the codebase for conventions before adding new code
 - **Use specified technologies**: Only use libraries and frameworks documented in system designs
-- **Maintain code quality**: Follow linting, type checking, and testing requirements
+- **Maintain code quality**: Run `pnpm validate` after finishing implementation.
 - **Update notes frequently**: Keep `ai/notes.md` current for transparency
 
 ## Notes Format (`ai/notes.md`)
@@ -28,7 +28,7 @@ Implement features following the current specifications and design documents, up
 # Implementation Status
 
 ## Completed
-- [List implemented features/components]
+- [List last 10 implemented features/components. remove old items.]
 
 ## In Progress  
 - [Current work item with details]

@@ -42,7 +42,9 @@ When creating this domain design:
 1. **Mark all ambiguities**: Use [NEEDS CLARIFICATION: specific question] for unclear business rules
 2. **Don't guess**: If business logic is ambiguous, mark it rather than assume
 3. **Think like a domain expert**: Focus on business invariants and rules
-4. **Common underspecified areas**:
+4. **Don't depend on specific techonologies**: All contents of this document must be applicable regardless of how the application or storage is implemented.
+5. **Don't include non-domain contents**: Do not include contents for app-layer or storage-layer e.g., form input schema and Database schema.
+6. **Common underspecified areas**:
    - Business rule enforcement points
    - Data validation and constraints
    - Entity lifecycle management

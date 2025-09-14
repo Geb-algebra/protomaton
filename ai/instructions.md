@@ -7,3 +7,4 @@
 - `pnpm check:write-unsafe` ← run this after every task with edit
 - `pnpm test:unit:run`
 - `pnpm typecheck`
+- `pnpm dlx shadcn@latest add *`

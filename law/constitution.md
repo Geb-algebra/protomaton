@@ -23,7 +23,8 @@ Before you implement Application layer, you must read `law/react-router-law.md` 
 * Services must not depend on UI (`app/routes/*`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
 * Simple CRUD shouldn't be services. They should be acheved just by calling factories (C) and repositories `get` (R), `save` (U) and `delete`(D)
 * **Route components** can’t use Services directly or contain business logic. Instead, `loader/action/clientLoader/clientAction` handle fetching via Repositories and mutating via Services. Components just render domain objects and forward user input.
-* Before mutating domain objects, always explain the change to operators and get approval.
+* Every codes in `app/domain` must be independent from any specific technologies used in application or storage.
+* Codes for app-layer or storage-laye (e.g., form input schema or database schema) can't be included in `app/domain`.
 
 When creating specifications, always define what the domain objects are, what the business logic is, and how they are connected to realize the functionality.
 
