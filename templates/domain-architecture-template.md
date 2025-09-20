@@ -33,7 +33,7 @@
 - **Domain Objects**: Always required - core business entities
 - **Business Logic**: Required only for complex operations (skip CRUD)
 - **Validation Rules**: Required when business constraints exist
-- **Domain Events**: Optional - for cross-boundary communication
+- **Exposed APIs**: Always required - Functions exposed to other domains and the application
 - When a section doesn't apply, leave it as "N/A" for future potential application
 
 
@@ -82,31 +82,21 @@ When creating this domain design:
 - Rule 2: [Constraint description]
 
 ## Business Logic
-
-### Complex Operations
 <!-- Only include non-trivial business operations, skip simple CRUD -->
 
-#### Operation: [Name]
+### Operation: [Name]
 **Purpose**: [What business problem this solves]  
 **Inputs**: [Required data]  
 **Logic**: [High-level algorithm or business rules]  
 **Outputs**: [Results produced]  
 **Constraints**: [Business rules that must be maintained]
 
-#### Operation: [Name]
+### Operation: [Name]
 **Purpose**: [What business problem this solves]  
 **Inputs**: [Required data]  
 **Logic**: [High-level algorithm or business rules]  
 **Outputs**: [Results produced]  
 **Constraints**: [Business rules that must be maintained]
-
-## Domain Events
-<!-- Important business events that other domains might need to know about -->
-
-### Event: [Name]
-**Triggered When**: [Condition that causes this event]  
-**Data Included**: [Information carried by the event]  
-**Consumers**: [Who needs to know about this event]
 
 ## Validation Rules
 <!-- Domain-wide validation and business constraints -->
@@ -116,6 +106,16 @@ When creating this domain design:
 
 ### Business Constraints  
 - [Constraint]: [Description and enforcement rules]
+
+## Exposed APIs
+<!-- Functions that will be exported from index.ts for use by other domains and the application -->
+
+### API: [Name]
+**Purpose**: [What business capability this provides to other domains]  
+**Inputs**: [Required parameters and types]  
+**Operation**: [What domain objects/services this combines]  
+**Outputs**: [Return values and types]  
+**Usage Context**: [When other domains or app layers would use this]
 
 ## Constitution Compliance Checklist
 <!-- Verify adherence to constitution.md principles -->

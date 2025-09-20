@@ -16,15 +16,15 @@ Before you implement Application layer, you must read `law/react-router-law.md` 
 ### III. Domain Driven Development
 
 * Each domain has its own directory `app/domain/[domain name]`.
-* Domain objects go in `models.ts` as Zod schema.
+* Domain objects go in `models.ts` as Zod schema. `models.ts` must be independent from specific persistence technologies (e.g., PostgresQL or Drizzle). it also never include codes for app-layer (e.g., form input schema).
 * Each domain object has a **Factory** (ensures correct type and defaults) in `lifecycle.ts`.
 * Each domain object has a **Repository** (static `get`, `save` only; no business logic) in `lifecycle.ts`.
-* **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests. 
+* **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests.
 * Services must not depend on UI (`app/routes/*`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
 * Simple CRUD shouldn't be services. They should be acheved just by calling factories (C) and repositories `get` (R), `save` (U) and `delete`(D)
-* **Route components** can’t use Services directly or contain business logic. Instead, `loader/action/clientLoader/clientAction` handle fetching via Repositories and mutating via Services. Components just render domain objects and forward user input.
-* Every codes in `app/domain` must be independent from any specific technologies used in application or storage.
-* Codes for app-layer or storage-laye (e.g., form input schema or database schema) can't be included in `app/domain`.
+* Each domain must have an `index.ts` exposing minimal APIs to other domains and the app. These APIs must only combine models, factories, repositories, and services, never contain original logic.
+* Only functions exported from `domain/[domain name]/index.ts` can be used in outside of the domain directly.
+* React Router's Route Modules can use them domain APIs only in `loader/action/clientLoader/clientAction`. DO NOT use domain modules in Route Components. Route Components just render domain objects and forward user input.
 
 When creating specifications, always define what the domain objects are, what the business logic is, and how they are connected to realize the functionality.
 

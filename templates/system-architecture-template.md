@@ -24,6 +24,7 @@
 ## ⚡ Quick Guidelines
 - ✅ Focus on technical infrastructure and non-functional requirements
 - ❌ Avoid domain logic or UI-specific concerns
+- 🔒 MUST only interface with domains through their exported APIs from `domain/[domain name]/index.ts`
 - 🏗️ Implementation blueprint for system-level technical decisions
 
 ### Section Requirements
@@ -38,13 +39,15 @@ When creating this system design:
 1. **Mark all ambiguities**: Use [NEEDS CLARIFICATION: specific question] for unclear technical requirements
 2. **Don't guess**: If performance/security requirements are ambiguous, mark them
 3. **Think like a systems architect**: Focus on scalability, reliability, maintainability
-4. **Common underspecified areas**:
+4. **Domain Integration**: Only reference domain APIs that will be exported from `domain/[domain name]/index.ts`
+5. **Common underspecified areas**:
    - Performance requirements and SLAs
    - Security and compliance requirements
    - Data backup and disaster recovery
    - Monitoring and alerting needs
    - Third-party integration requirements
    - Deployment and infrastructure needs
+   - How system components interface with domain APIs
 
 ---
 
@@ -79,13 +82,15 @@ When creating this system design:
 <!-- Database schema, data models, relationships -->
 
 ### Database Schema
-- **Table/Collection**: [Name] - [Purpose]
-  - Fields: [Key fields and types]
+- **Table/Collection**: [Name] - [Purpose and domain mapping]
+  - Fields: [Key fields and types - mapped to domain objects]
   - Indexes: [Important indexes for performance]
+  - **Domain Integration**: [How this maps to domain repositories]
 
 ### Data Flow
-1. [Data source] → [Processing] → [Storage]  
-2. [Request] → [Validation] → [Business Logic] → [Persistence]
+1. [System Layer] → [Domain API] → [Domain Processing] → [Storage via Repository]
+2. [External Request] → [System Validation] → [Domain API] → [Domain Logic] → [Persistence]
+3. [Background Job] → [Domain API] → [Domain Service] → [Result]
 
 ## Performance Considerations
 <!-- Caching, optimization, scalability -->
@@ -103,11 +108,13 @@ When creating this system design:
 
 ### Background Jobs
 - **Job Type**: [Purpose and trigger conditions]
-- **Processing**: [How jobs are executed]
+- **Domain APIs Used**: [Which domain APIs the job will call]
+- **Processing**: [How jobs are executed via domain APIs]
 
 ### Event Handling
-- **Event Source**: [Where events originate]
-- **Event Processing**: [How events are handled]
+- **Event Source**: [Where events originate - domain events or external]
+- **Domain API Integration**: [How system responds using domain APIs]
+- **Event Processing**: [How events are handled via domain APIs]
 
 ## Error Handling & Monitoring
 <!-- Error recovery, logging, observability -->
@@ -134,10 +141,12 @@ When creating this system design:
 ## Constitution Compliance Checklist
 <!-- Verify adherence to constitution.md principles -->
 - [ ] Architecture follows separation of concerns
+- [ ] System layer ONLY interfaces with domains through exported APIs from domain/[domain name]/index.ts
+- [ ] NO direct access to domain internals (models.ts, services.ts, lifecycle.ts)
 - [ ] Dependencies are properly abstracted
 - [ ] Error handling is comprehensive
 - [ ] Security best practices are implemented
-- [ ] [Add other constitution.md requirements as applicable]
+- [ ] Background jobs and system processes use domain APIs correctly
 
 ## React Router Law Compliance Checklist
 <!-- If applicable - verify adherence to law/react-router-law.md -->

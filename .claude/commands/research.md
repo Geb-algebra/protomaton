@@ -16,7 +16,7 @@ Search through app and system architecture documents to find [NEEDS RESEARCH] ma
    - Check compatibility with the project's tech stack (React Router v7, CloudFlare Workers)
    - Find performance benchmarks and trade-offs
    - Review recent community discussions and adoption trends
-4. **Document Findings**: Create detailed design documents using `./scripts/design-detail.sh [type] [name] [description]` and complete the "Execution Flow" section in the document created in `./docs/[type]/detail/[name].md`.
+4. **Document Findings**: Create detailed design documents using `./scripts/design-detail.sh [type] [name] [description]` and Fill in the template following the "Execution Flow" section in the document created in `./docs/[type]/detail/[name].md`.
    - `docs/app/[name]/architecture.md` → type: `app`, name: `[name]`
    - `docs/system/[name]/architecture.md` → type: `system`, name: `[name]`
 5. **Update Architecture**: Update architecture documents with research-backed recommendations, removing [NEEDS RESEARCH] markers

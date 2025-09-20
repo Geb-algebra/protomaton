@@ -27,6 +27,7 @@
 ## ⚡ Quick Guidelines
 - ✅ Focus on user experience, component architecture, and application workflows
 - ❌ Avoid domain logic (belongs in domain designs) and infrastructure details
+- 🔒 MUST only use domain APIs exported from `domain/[domain name]/index.ts` - NO direct imports from domain internals
 - 👩‍💻 Reviewable by technical team to catch architectural issues
 
 ### Section Requirements
@@ -42,7 +43,8 @@ When creating this app design:
 1. **Mark all ambiguities**: Use [NEEDS CLARIFICATION: specific question] for unclear UX or workflow decisions
 2. **Don't guess**: If user flow or application logic is ambiguous, mark it rather than assume
 3. **Think application layer**: Focus on orchestration, UI workflows, but not domain business rules
-4. **Common underspecified areas**:
+4. **Domain API Usage**: Only reference domain APIs that will be exported from `domain/[domain name]/index.ts`
+5. **Common underspecified areas**:
    - User permission levels and conditional UI
    - Error state and loading state behaviors
    - Mobile vs desktop experience differences
@@ -50,6 +52,7 @@ When creating this app design:
    - Form validation and user feedback
    - Data refresh and real-time update needs
    - Application workflow orchestration logic
+   - Which domain APIs are needed for each route
 
 ---
 
@@ -62,6 +65,7 @@ When creating this app design:
 ### Route: [Path]
 **Pattern**: [Pattern from law/react-router-law.md - e.g., "Loader Pattern", "Action Pattern"]  
 **Purpose**: [What this route module handles]  
+**Domain APIs Used**: [List domain APIs from `domain/[domain name]/index.ts`]
 **Responsibilities**:
 - [Responsibility 1]
 - [Responsibility 2]
@@ -69,6 +73,7 @@ When creating this app design:
 ### Route: [Path]  
 **Pattern**: [Pattern from law/react-router-law.md]  
 **Purpose**: [What this route module handles]  
+**Domain APIs Used**: [List domain APIs from `domain/[domain name]/index.ts`]
 **Responsibilities**:
 - [Responsibility 1]
 - [Responsibility 2]
@@ -127,18 +132,21 @@ When creating this app design:
 - [Coordination logic that doesn't belong in domain layer]
 
 ## Data Flow
-<!-- How data moves through the UI components -->
+<!-- How data moves through the UI components via domain APIs -->
 
-1. [Data source] → [Component] → [Action/Processing] → [Result]
-2. [User interaction] → [Component] → [State update] → [UI update]
+1. [Route Loader] → [Domain API] → [Component] → [UI Render]
+2. [User interaction] → [Route Action] → [Domain API] → [State update] → [UI update]
+3. [Form submission] → [Domain API validation] → [Domain API operation] → [Result]
 
 ## Constitution Compliance Checklist
 <!-- Verify adherence to constitution.md principles -->
 - [ ] Components follow single responsibility principle  
 - [ ] State management follows established patterns
-- [ ] External data access uses proper abstractions
+- [ ] Route modules ONLY use domain APIs from `domain/[domain name]/index.ts` exports
+- [ ] NO direct imports from domain internals (models.ts, services.ts, lifecycle.ts)
+- [ ] Domain API usage is limited to loader/action/clientLoader/clientAction
+- [ ] Route components only render domain objects and forward user input
 - [ ] Error boundaries are implemented where needed
-- [ ] [Add other constitution.md requirements as applicable]
 
 ## React Router Law Compliance Checklist  
 <!-- Verify adherence to law/react-router-law.md -->
