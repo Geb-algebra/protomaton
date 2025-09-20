@@ -17,6 +17,7 @@ Before you implement Application layer, you must read `law/react-router-law.md` 
 
 * Each domain has its own directory `app/domain/[domain name]`.
 * Domain objects go in `models.ts` as Zod schema. `models.ts` must be independent from specific persistence technologies (e.g., PostgresQL or Drizzle). it also never include codes for app-layer (e.g., form input schema).
+* Unique identifier of every domain objects must be typed as branded types  (like `type Branded<T, Brand> = T & { readonly __brand: Brand }; → type Meters = Branded<number, "meters">;`). Instances with the branded types must be created only in lifecycle.ts. DO NOT create new instances with the branded types in any other places.
 * Each domain object has a **Factory** (ensures correct type and defaults) in `lifecycle.ts`.
 * Each domain object has a **Repository** (static `get`, `save` only; no business logic) in `lifecycle.ts`.
 * **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests.
