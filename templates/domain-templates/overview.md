@@ -11,15 +11,16 @@
    → Extract: entities, value objects, aggregates
 3. For each unclear business rule:
    → Mark with [NEEDS CLARIFICATION: specific question]
-4. Model domain objects and relationships
+4. Model domain objects and relationships in ./models.ts as self-documented Zod schemas
    → Ensure proper encapsulation
    → Define validation rules
-5. Identify complex business logic (skip simple CRUD)
+5. Identify complex business logic (skip simple CRUD) and define them in ./services.ts as unimplemented self-documented functions
    → Focus on calculations, constraints, workflows
-6. Define domain events for cross-boundary communication
-7. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
+6. Define exposed APIs for use by other domains and the application in ./index.ts as unimplemented self-documented functions
+7. Expose types (imported from ./models.ts into ./index.ts) required for use by other domains and the application from ./index.ts
+8. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
    → If violations found: ERROR "Fix constitution compliance"
-8. Return: SUCCESS (domain design ready for implementation)
+9. Return: SUCCESS (domain design ready for implementation)
 ```
 
 ---
@@ -57,66 +58,6 @@ When creating this domain design:
 ## Overview
 <!-- Brief description of this domain and its responsibilities -->
 
-## Domain Objects
-
-### Entity: [Name]
-<!-- Primary business entities -->
-**Purpose**: [What this entity represents in the business domain]
-
-**Key Attributes**:
-- `field_name` (type) - Description and validation rules
-- `field_name` (type) - Description and validation rules
-
-**Relationships**:
-- [Relationship type] with [Other Entity] - Description
-
-### Value Object: [Name]  
-<!-- Immutable objects that represent concepts -->
-**Purpose**: [What this value object represents]
-
-**Attributes**:
-- `field_name` (type) - Description and validation rules
-
-**Validation Rules**:
-- Rule 1: [Constraint description]
-- Rule 2: [Constraint description]
-
-## Business Logic
-<!-- Only include non-trivial business operations, skip simple CRUD -->
-
-### Operation: [Name]
-**Purpose**: [What business problem this solves]  
-**Inputs**: [Required data]  
-**Logic**: [High-level algorithm or business rules]  
-**Outputs**: [Results produced]  
-**Constraints**: [Business rules that must be maintained]
-
-### Operation: [Name]
-**Purpose**: [What business problem this solves]  
-**Inputs**: [Required data]  
-**Logic**: [High-level algorithm or business rules]  
-**Outputs**: [Results produced]  
-**Constraints**: [Business rules that must be maintained]
-
-## Validation Rules
-<!-- Domain-wide validation and business constraints -->
-
-### Entity Validation
-- [Entity Name]: [Validation rules]
-
-### Business Constraints  
-- [Constraint]: [Description and enforcement rules]
-
-## Exposed APIs
-<!-- Functions that will be exported from index.ts for use by other domains and the application -->
-
-### API: [Name]
-**Purpose**: [What business capability this provides to other domains]  
-**Inputs**: [Required parameters and types]  
-**Operation**: [What domain objects/services this combines]  
-**Outputs**: [Return values and types]  
-**Usage Context**: [When other domains or app layers would use this]
-
 ## Constitution Compliance Checklist
 <!-- Verify adherence to constitution.md principles -->
 - [ ] Domain objects are properly encapsulated
@@ -124,6 +65,3 @@ When creating this domain design:
 - [ ] Simple CRUD operations handled by Factories and Repositories, not services
 - [ ] External dependencies are abstracted through interfaces
 - [ ] Domain events are used for cross-boundary communication
-
----
-*This document defines the core business domain model and logic. It should be reviewable by business stakeholders to verify domain correctness.*

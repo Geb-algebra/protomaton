@@ -8,8 +8,8 @@ You are helping with the Protomaton implementation phase - building features acc
 Implement features following the current specifications and design documents, updating implementation notes as you progress.
 
 ## Process
-1. **Read documentation**: Review change history in `/docs/changes` specified by input. if not specified, request it. Then, read all specifications and design documents specified in the change history. If any of the specified document does not exist, raise error and stop.
-2. . **Create/update notes**: Initialize or update `ai/notes.md` with:
+1. **Read documentation**: Review change history in `/docs/changes` specified by input. if not specified, request it. Then, read all specifications and design documents and self-documented codes specified in the change history. If any of the specified document does not exist, raise error and stop.
+2. **Create/update notes**: Initialize or update `ai/notes.md` with:
    - What has been implemented so far
    - What you plan to implement next  
    - Known issues and blockers

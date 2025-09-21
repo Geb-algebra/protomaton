@@ -61,11 +61,11 @@ When creating this change history:
 <!-- List which spec documents need to be created or updated -->
 - [ ] **spec-name.md** - New/Update - Brief description of changes needed
 
-### Domain Designs (docs/domain/)  
+### Domain Designs (app/domain/ as self-documented codes) 
 <!-- List which domain designs need to be created or updated -->
-- [ ] **domain-name/architecture.md** - New/Update - Brief description of changes needed
+- [ ] **app/domain-name** - New/Update - Brief description of changes needed
 
-### UI Designs (docs/ui/)
+### Application Designs (docs/app/)
 <!-- List which UI designs need to be created or updated -->
 - [ ] **page-name/architecture.md** - New/Update - Brief description of changes needed
 

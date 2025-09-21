@@ -8,46 +8,47 @@ You are helping with the Protomaton domain design phase - creating and updating 
 Create or update domain design documents based on the current change history and specifications.
 
 ## Process
-1. **Read context**: Review the current change history in `/docs/changes` and specifications in `/docs/domain` specified by the change history. if specifications do not exist,  ERROR "No feature spec provided"
+1. **Read context**: Review the current change history in `/docs/changes` and specifications in `/app/domain` specified by the change history. if specifications do not exist,  ERROR "No feature spec provided"
 2. **Create/update basic designs**: For domain design:
-   - Run `./scripts/design.sh domain [name]` to create from template if needed. name must be same as what specified in the change history.
-   - Fill in the template following the "Execution Flow" section in the basic architecture documents following the guidelines below
+   - Run `./scripts/design-domain.sh [name]` to create from template if needed. name must be same as what specified in the change history.
+   - Fill in the templates following the "Execution Flow" section in `app/domain/[name]/overview.md` following the guidelines below
 3. **Create/update detailed designs**: When complex decisions need documentation:
-   - Run `./scripts/design-detail.sh domain [name] [description]` to create detailed design documents
-   - Document architectural decision records and implementation complexities
+   - Run `./scripts/design-detail-domain.sh [domain-name] [detail-name]` to create detailed design documents
+   - Document architectural decision records in `app/domain/[domain-name]/design-detail/[detail-name].md`
    - Add it to the change history in `/docs/changes`
 4. **Technology research**: If new technologies are needed, research and document choices
-5. **Review completeness**: Ensure designs cover all specification requirements
+5. **Review completeness**: Ensure domain implementation covers all requirements
 
 ## Domain Design Guidelines
 
-### Basic (`domain/[name]/architecture.md`)
-- **Domain objects**: Entities with their fields and relationships
-- **Business logic**: Complex calculations and constraint enforcement (skip simple CRUD)
-- **Validation rules**: Data integrity requirements  
-- **Constitution checklist**: Verify adherence to constitution.md
-- **Target audience**: Business stakeholders who can verify domain correctness
+### Basic Domain Implementation (`app/domain/[name]/`)
+- **models.ts**: Domain objects as Zod schemas with strict validation
+- **lifecycle.ts**: Factories and repositories for domain objects
+- **services.ts**: Pure business logic functions with unit tests
+- **index.ts**: Minimal API exports for other domains/app layers
+- **Constitution compliance**: Follow all domain-driven development rules
 
-### Detailed (`domain/[name]/details/[description].md`)
+### Detailed Design Documents (`app/domain/[name]/design-detail/[name].md`)
 - **Architectural decision records**: Complex domain logic decisions requiring comparison/justification
 - **AI error reinforcement**: Areas where AI previously made mistakes that need explicit guidance
-- **Complex business rules**: Detailed specifications that couldn't fit in basic architecture
+- **Complex business rules**: Detailed specifications that couldn't fit in basic implementation
 - **Permanently maintained**: Updated throughout project lifecycle
 
 ## When to Create Detailed Design Documents
 
-Create detailed design documents (`details/[description].md`) when:
+Create detailed design documents (`design-detail/[detail-name].md`) when:
 - **Complex decisions**: Multiple viable approaches need comparison and justification
 - **AI reinforcement needed**: Previous AI implementations were incorrect and need explicit guidance
 - **Basic architecture insufficient**: Important details that can't fit in the main architecture document
 - **High implementation risk**: Areas prone to errors that benefit from detailed specification
 
 ## Important Notes
-- **Basic documents**: Always required, permanently maintained throughout project lifecycle
-- **Detailed documents**: Created as needed, also permanently maintained
-- Include constitution.md compliance checklists in basic architecture documents
-- Focus on architectural decisions, not implementation details
+- **Domain implementation**: Always required, follow constitution.md domain-driven development rules
+- **Detailed documents**: Created as needed for complex decisions, permanently maintained
+- Include constitution.md compliance in domain implementation
+- You should define interfaces of services and APIs but DO NOT implement them now.
+- Focus on domain logic and architectural decisions, not UI/storage details
 - Research and document technology choices with rationale
-- Use `./scripts/design-detail.sh domain [name] [description]` to create detailed design templates
+- Use `./scripts/design-detail-domain.sh [domain-name] [detail-name]` to create detailed design templates
 
 Begin the domain design process now.

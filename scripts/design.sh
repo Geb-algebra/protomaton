@@ -5,10 +5,10 @@
 
 if [ $# -lt 2 ]; then
     echo "Usage: ./scripts/design.sh [type] [name]"
-    echo "Types: domain, app, system"
-    echo "Example: ./scripts/design.sh domain user-management"
+    echo "Types: app, system"
     echo "Example: ./scripts/design.sh app login-page"
     echo "Example: ./scripts/design.sh system database"
+    echo "Note: For domains, use ./scripts/design-domain.sh [name]"
     exit 1
 fi
 
@@ -19,10 +19,14 @@ design_file="${design_dir}/architecture.md"
 
 # Validate type
 case "$type" in
-    domain|app|system)
+    app|system)
+        ;;
+    domain)
+        echo "❌ For domains, use: ./scripts/design-domain.sh [name]"
+        exit 1
         ;;
     *)
-        echo "❌ Invalid type: $type. Must be domain, app, or system"
+        echo "❌ Invalid type: $type. Must be app or system"
         exit 1
         ;;
 esac
