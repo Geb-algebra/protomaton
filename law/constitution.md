@@ -11,7 +11,7 @@ Every time you make a specification or a plan, you should first read the README.
 
 This project is built upon React Router Framework Mode.
 
-Before you implement Application layer, you must read `law/react-router-law.md` and strictly follow it.
+Before you implement Application layer, you must read `law/react-router-general-rules.md` for fundamentals and then `law/react-router-law.md` for rules in this project and strictly follow it.
 
 ### III. Domain Driven Development
 
@@ -23,7 +23,7 @@ Before you implement Application layer, you must read `law/react-router-law.md` 
 * **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests.
 * Services must not depend on UI (`app/routes/*`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
 * Simple CRUD shouldn't be services. They should be acheved just by calling factories (C) and repositories `get` (R), `save` (U) and `delete`(D)
-* Each domain must have an `index.ts` exposing minimal APIs to other domains and the app. These APIs must only combine models, factories, repositories, and services, never contain original logic.
+* Each domain must have an `index.ts` exposing minimal APIs and types to other domains and the app. These APIs must only combine models, factories, repositories, and services, never contain original logic.
 * Only functions exported from `domain/[domain name]/index.ts` can be used in outside of the domain directly.
 * React Router's Route Modules can use them domain APIs only in `loader/action/clientLoader/clientAction`. DO NOT use domain modules in Route Components. Route Components just render domain objects and forward user input.
 
@@ -32,6 +32,7 @@ When creating specifications, always define what the domain objects are, what th
 ### VI. Schema validation with Zod
 
 * Every domain object and form input should be validated.
+* You must read `law/zod-law.md` first and strictly follow it.
 * Domain objects should be defined with Zod schema with strict constraints (including min/max, length etc, not only types) in `models.ts`. The types of them should also be defined as inferred types from Zod schema.
 * A form input should be defined in the route module it is used as a Zod schema.
 * Every schema validation should be built with Zod. No self-implementation is allowed.

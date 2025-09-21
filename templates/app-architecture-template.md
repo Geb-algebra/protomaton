@@ -5,7 +5,7 @@
 
 ## Execution Flow
 ```
-1. Parse requirements from specifications and domain designs
+1. Parse requirements from specifications in `docs/spec/` and domain designs in `docs/domain/`
    → If no related specs: ERROR "App design requires specifications"
 2. Identify user interaction patterns and application workflows
    → Map user scenarios to UI flows and application logic

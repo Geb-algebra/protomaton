@@ -8,13 +8,14 @@ You are helping with the Protomaton app design phase - creating and updating app
 Create or update app and system design documents based on the current change history and specifications.
 
 ## Process
-1. **Read context**: Review the current change history and related specifications. if specifications do not exist,  ERROR "No feature spec provided"
+1. **Read context**: Review the current change history in `/docs/changes` and specifications in `/docs/domain, /docs/system, /docs/app` specified by the change history. if specifications do not exist,  ERROR "No feature spec provided"
 2. **Create/update basic designs**: For each design area mentioned:
-   - Run `./scripts/design.sh [type] [name]` to create from template if needed
+   - Run `./scripts/design.sh [type] [name]` to create from template if needed. name must be same as what specified in the change history.
    - Fill in the template following the "Execution Flow" section in the basic architecture documents following the guidelines below
 3. **Create/update detailed designs**: When complex decisions need documentation:
    - Run `./scripts/design-detail.sh [type] [name] [description]` to create detailed design documents
    - Document architectural decision records and implementation complexities
+   - Add it to the change history in `/docs/changes`
 4. **Technology research**: If new technologies are needed, research and document choices
 5. **Review completeness**: Ensure designs cover all specification requirements
 

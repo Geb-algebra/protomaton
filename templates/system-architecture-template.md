@@ -5,7 +5,7 @@
 
 ## Execution Flow (System Design)
 ```
-1. Parse requirements from specifications and domain/UI designs
+1. Parse requirements from specifications in `docs/spec/` and domain/UI designs in `docs/domain/` and `docs/app/`
    → If no related designs: ERROR "System design requires other designs"
 2. Identify technical concerns not covered by domain/UI layers
    → Persistence, performance, security, integration
