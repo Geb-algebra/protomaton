@@ -57,21 +57,23 @@ When creating this change history:
 
 ## Documentation Updates Required
 
-### Specifications (docs/spec/)
+### Specifications (app/feature)
 <!-- List which spec documents need to be created or updated -->
-- [ ] **spec-name.md** - New/Update - Brief description of changes needed
+- [ ] **[feature-name]/spec.md** - New/Update - Brief description of changes needed
 
 ### Domain Designs (app/domain/ as self-documented codes) 
 <!-- List which domain designs need to be created or updated -->
-- [ ] **app/domain-name** - New/Update - Brief description of changes needed
+- [ ] **app/[domain-name]** - New/Update - Brief description of changes needed
 
 ### Application Designs (docs/app/)
-<!-- List which UI designs need to be created or updated -->
-- [ ] **page-name/architecture.md** - New/Update - Brief description of changes needed
+<!-- List which application designs need to be created or updated -->
+- [ ] **app/[feature-name]** - New/Update - Brief description of changes needed
 
-### System Designs (docs/system/)
-<!-- List which system designs need to be created or updated -->  
-- [ ] **item-name/architecture.md** - New/Update - Brief description of changes needed
+### Technical Decisions (docs/adr/)
+<!-- List which system designs need to be created. -->  
+<!-- They will never updated. When decision updates are needed, create a new document that overwrites the previous decision. -->
+<!-- Only include if technical comparison/selection needed. Can be left blank and added later. -->
+- [ ] **[decision-name].md** - New - Brief description of changes needed
 
 ## Notes
 <!-- Any additional context, constraints, or considerations. Do Not include what is specified by constitution/laws -->

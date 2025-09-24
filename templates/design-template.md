@@ -5,19 +5,20 @@
 
 ## Execution Flow
 ```
-1. Parse requirements from specifications in `docs/spec/` and domain designs in `docs/domain/`
+1. Parse requirements from specifications in `docs/spec/` and domain designs in `app/domain/`
    → If no related specs: ERROR "App design requires specifications"
 2. Identify user interaction patterns and application workflows
    → Map user scenarios to UI flows and application logic
 3. For each unclear UX or application flow decision:
    → Mark with [NEEDS CLARIFICATION: specific question]
-4. Design route structure following React Router patterns
+4. Create ASCII wireframes for layout structure
+5. Identify functionalities that require additional libraries beyond core stack. Mark [NEEDS RESEARCH] to a functionality if the library for it is not specified or easily selectable.
+6. Design route structure following React Router patterns and write down the "Route Modules" section.
    → Reference law/react-router-law.md for pattern selection
-5. Identify shared vs route-specific components
-6. Design application layer logic (non-domain orchestration)
-7. Create ASCII wireframes for layout structure
-8. Identify functionalities that require additional libraries beyond core stack. Mark [NEEDS RESEARCH] to a functionality if the library for it is not specified or easily selectable.
-10. Run compliance checklists (Constitution + React Router Law)
+7. Design data flow across the Route Modules
+8. for each new Route Modules, run `./scripts/design-route.sh [module.name]` to copy a template Route Module, add its route to `app/routes.ts` and then fill in the template comment in the Route Module.
+9.  Verify that this document's Data Flow section aligns with all Route Module responsibilities described in their comments. 
+10. Run compliance checklists (Constitution + React Router Law) in the comments of the Route Modules
    → If violations found: ERROR "Fix compliance issues"
 11. Return: SUCCESS (App design ready for implementation)
 ```
@@ -59,42 +60,8 @@ When creating this app design:
 ## Overview
 <!-- Brief description of this page/feature and its purpose -->
 
-## Route Modules
-<!-- List of React Router modules to implement -->
-
-### Route: [Path]
-**Pattern**: [Pattern from law/react-router-law.md - e.g., "Loader Pattern", "Action Pattern"]  
-**Purpose**: [What this route module handles]  
-**Domain APIs Used**: [List domain APIs from `domain/[domain name]/index.ts`]
-**Responsibilities**:
-- [Responsibility 1]
-- [Responsibility 2]
-
-### Route: [Path]  
-**Pattern**: [Pattern from law/react-router-law.md]  
-**Purpose**: [What this route module handles]  
-**Domain APIs Used**: [List domain APIs from `domain/[domain name]/index.ts`]
-**Responsibilities**:
-- [Responsibility 1]
-- [Responsibility 2]
-
-## Shared Components
-<!-- Components used by multiple routes (not internal route components) -->
-
-### Component: [Name]
-**Purpose**: [What this component does]  
-**Used By**: [Which routes use this component]  
-**Props Interface**: 
-- `prop_name` (type) - Description
-
-### Component: [Name]
-**Purpose**: [What this component does]  
-**Used By**: [Which routes use this component]  
-**Props Interface**:
-- `prop_name` (type) - Description
-
 ## UI Wireframe
-<!-- ASCII diagram showing how components are arranged -->
+<!-- ASCII diagram for all pages showing how components are arranged -->
 
 ```
 ┌─────────────────────────────────────┐
@@ -110,51 +77,20 @@ When creating this app design:
 └─────────────────────────────────────┘
 ```
 
-## Technology Stack
-<!-- Libraries beyond React Router, Shadcn/ui, and Zod -->
+## Route Modules
+<!-- List of React Router modules to implement -->
+<!-- Just single-line abstracts. Full Description should be at comments in each Route Module file. -->
 
-## Application Logic
-<!-- Non-domain orchestration logic and workflows -->
-
-### Workflow: [Workflow Name]
-**Purpose**: [What this workflow accomplishes]  
-**Trigger**: [What initiates this workflow]  
-**Steps**:
-1. [Step 1 - UI action/validation]
-2. [Step 2 - Data orchestration]  
-3. [Step 3 - State updates]
-4. [Step 4 - UI feedback]
-
-### Orchestration: [Process Name]  
-**Purpose**: [What this orchestration manages]
-**Components Involved**: [Which components participate]
-**Logic Flow**:
-- [Coordination logic that doesn't belong in domain layer]
+- Route: [Path] ... A [Page | Resource Route | Fullstack Component] that [What this route module handles]
+- Route: [Path] ... A [Page | Resource Route | Fullstack Component] that [What this route module handles]
 
 ## Data Flow
-<!-- How data moves through the UI components via domain APIs -->
+<!-- How data moves ACROSS the multiple Route Modules -->
 
-1. [Route Loader] → [Domain API] → [Component] → [UI Render]
-2. [User interaction] → [Route Action] → [Domain API] → [State update] → [UI update]
-3. [Form submission] → [Domain API validation] → [Domain API operation] → [Result]
+1. [Route Loader] → [Domain API] → [Route Component] → [Another Component as Props] → [UI Render]
 
-## Constitution Compliance Checklist
-<!-- Verify adherence to constitution.md principles -->
-- [ ] Components follow single responsibility principle  
-- [ ] State management follows established patterns
-- [ ] Route modules ONLY use domain APIs from `domain/[domain name]/index.ts` exports
-- [ ] NO direct imports from domain internals (models.ts, services.ts, lifecycle.ts)
-- [ ] Domain API usage is limited to loader/action/clientLoader/clientAction
-- [ ] Route components only render domain objects and forward user input
-- [ ] Error boundaries are implemented where needed
-
-## React Router Law Compliance Checklist  
-<!-- Verify adherence to law/react-router-law.md -->
-- [ ] Route modules follow specified patterns
-- [ ] Data loading uses appropriate loaders
-- [ ] Form actions use appropriate action functions  
-- [ ] Navigation follows React Router conventions
-- [ ] [Add other react-router-law.md requirements as applicable]
+## Technology Stack
+<!-- Libraries beyond React Router, Shadcn/ui, and Zod -->
 
 ---
 *This document defines the application architecture, component structure, and application layer logic. Technical reviewers should verify this before implementation to catch architectural issues early.*

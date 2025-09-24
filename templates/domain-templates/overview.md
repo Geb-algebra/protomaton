@@ -11,12 +11,12 @@
    → Extract: entities, value objects, aggregates
 3. For each unclear business rule:
    → Mark with [NEEDS CLARIFICATION: specific question]
-4. Model domain objects and relationships in ./models.ts as self-documented Zod schemas
+4. Create or update domain objects and relationships in ./models.ts as self-documented Zod schemas
    → Ensure proper encapsulation
    → Define validation rules
-5. Identify complex business logic (skip simple CRUD) and define them in ./services.ts as unimplemented self-documented functions
+5. Identify complex business logic (skip simple CRUD) and define or update them in ./services.ts as unimplemented functions
    → Focus on calculations, constraints, workflows
-6. Define exposed APIs for use by other domains and the application in ./index.ts as unimplemented self-documented functions
+6. Define or update exposed APIs for use by other domains and the application in ./index.ts as unimplemented functions
 7. Expose types (imported from ./models.ts into ./index.ts) required for use by other domains and the application from ./index.ts
 8. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
    → If violations found: ERROR "Fix constitution compliance"
@@ -31,10 +31,10 @@
 - 🏢 Reviewable by business stakeholders for domain correctness
 
 ### Section Requirements
-- **Domain Objects**: Always required - core business entities
-- **Business Logic**: Required only for complex operations (skip CRUD)
-- **Validation Rules**: Required when business constraints exist
-- **Exposed APIs**: Always required - Functions exposed to other domains and the application
+- **Domain Objects** (as zod schemas in `models.ts`): Always required - core business entities
+- **Business Logic** (as unimplemented functions in `services.ts`): Required only for complex operations (skip CRUD)
+- **Validation Rules** (as unimplemented and documented functions in `services.ts`): Required when business constraints exist
+- **Exposed APIs** (as unimplemented functions in `index.ts`): Always required - Functions exposed to other domains and the application
 - When a section doesn't apply, leave it as "N/A" for future potential application
 
 

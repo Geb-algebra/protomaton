@@ -10,7 +10,7 @@ if [ $# -ne 1 ]; then
 fi
 
 spec_name="$1"
-spec_file="docs/spec/${spec_name}.md"
+spec_file="app/features/${spec_name}/spec.md"
 
 # Create spec from template if it doesn't exist
 if [ ! -f "$spec_file" ]; then

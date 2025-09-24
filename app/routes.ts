@@ -1,14 +1,6 @@
-import type { RouteConfig } from "@react-router/dev/routes";
-import { remixRoutesOptionAdapter } from "@react-router/remix-routes-option-adapter";
-import { flatRoutes } from "remix-flat-routes";
+import { index, route } from "@react-router/dev/routes";
 
-export default remixRoutesOptionAdapter((defineRoutes) => {
-	return flatRoutes("routes", defineRoutes, {
-		ignoredRouteFiles: [
-			"**/.*",
-			"**/*.test.{ts,tsx,js,jsx}",
-			"**/*.spec.{ts,tsx,js,jsx}",
-			"**/test/**",
-		],
-	});
-}) satisfies RouteConfig;
+export default [
+  index("./spec/example/index.tsx"),
+  route("robots.txt", "./spec/other/robots.tsx"),
+]
