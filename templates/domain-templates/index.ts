@@ -6,7 +6,7 @@
 //
 // import { ExampleSchema } from "./models";
 // import { processExample } from "./services";
-// import { EsampleRepository } from "./lifecycle";
+// import { ExampleRepository } from "./lifecycle";
 //
 // /**
 //  * **Purpose**: [What business capability this provides to other domains]  

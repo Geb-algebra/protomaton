@@ -65,7 +65,7 @@ When creating this change history:
 <!-- List which domain designs need to be created or updated -->
 - [ ] **app/[domain-name]** - New/Update - Brief description of changes needed
 
-### Application Designs (docs/app/)
+### Application Designs (app/)
 <!-- List which application designs need to be created or updated -->
 - [ ] **app/[feature-name]** - New/Update - Brief description of changes needed
 

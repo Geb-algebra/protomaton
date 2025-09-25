@@ -9,7 +9,7 @@ This section defines terms we use in the remainder of this document.
 ### Route Module
 
 A Route Module is a `.tsx` file which is rendered as a page by React Router. 
-Typically it is either (1) `app/routes/*.tsx`, (2) `app/routes/{any name}+/*.tsx` and (3) `app/routes/*/route.tsx`.
+A `.tsx` file is technically specified as a Route Module by adding it to `routes.ts`.
 
 ### Route Component
 

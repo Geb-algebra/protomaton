@@ -16,11 +16,11 @@
    → Define validation rules
 5. Identify complex business logic (skip simple CRUD) and define or update them in ./services.ts as unimplemented functions
    → Focus on calculations, constraints, workflows
-6. Define or update exposed APIs for use by other domains and the application in ./index.ts as unimplemented functions
-7. Expose types (imported from ./models.ts into ./index.ts) required for use by other domains and the application from ./index.ts
-8. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
+6. Define or update exposed APIs for use by other domains and the application in ./index.ts as unimplemented functions so that they cover all of the acceptance scenarios in the specifications.
+8. Expose types (imported from ./models.ts into ./index.ts) required for use by other domains and the application from ./index.ts
+9. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
    → If violations found: ERROR "Fix constitution compliance"
-9. Return: SUCCESS (domain design ready for implementation)
+10. Return: SUCCESS (domain design ready for implementation)
 ```
 
 ---
@@ -64,4 +64,5 @@ When creating this domain design:
 - [ ] Business logic is contained within the domain layer as services
 - [ ] Simple CRUD operations handled by Factories and Repositories, not services
 - [ ] External dependencies are abstracted through interfaces
-- [ ] Domain events are used for cross-boundary communication
+- [ ] Exposed APIs cover all use cases of all features
+- [ ] Exposed APIs are as few as possible (no redundancy)

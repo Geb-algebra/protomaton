@@ -11,28 +11,27 @@ Every time you make a specification or a plan, you should first read the README.
 
 This project is built upon React Router Framework Mode.
 
-Before you implement Application layer, you must read `law/react-router-general-rules.md` for fundamentals and then `law/react-router-law.md` for rules in this project and strictly follow it.
+Before you implement Application layer, you must read `law/react-router-law.md` and strictly follow it.
 
 ### III. Domain Driven Development
 
 * Each domain has its own directory `app/domain/[domain name]`.
-* Domain objects go in `models.ts` as Zod schema. `models.ts` must be independent from specific persistence technologies (e.g., PostgresQL or Drizzle). it also never include codes for app-layer (e.g., form input schema).
-* Unique identifier of every domain objects must be typed as branded types  (like `type Branded<T, Brand> = T & { readonly __brand: Brand }; → type Meters = Branded<number, "meters">;`). Instances with the branded types must be created only in lifecycle.ts. DO NOT create new instances with the branded types in any other places.
+* Domain objects go in `models.ts` as Zod schema.
 * Each domain object has a **Factory** (ensures correct type and defaults) in `lifecycle.ts`.
 * Each domain object has a **Repository** (static `get`, `save` only; no business logic) in `lifecycle.ts`.
-* **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests.
-* Services must not depend on UI (`app/routes/*`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
+* **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests. 
+* Services must not depend on UI (`app/feature/**`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
 * Simple CRUD shouldn't be services. They should be acheved just by calling factories (C) and repositories `get` (R), `save` (U) and `delete`(D)
-* Each domain must have an `index.ts` exposing minimal APIs and types to other domains and the app. These APIs must only combine models, factories, repositories, and services, never contain original logic.
-* Only functions exported from `domain/[domain name]/index.ts` can be used in outside of the domain directly.
-* React Router's Route Modules can use them domain APIs only in `loader/action/clientLoader/clientAction`. DO NOT use domain modules in Route Components. Route Components just render domain objects and forward user input.
+* Each domain should have a set of APIs (as functions) exposed to applications and other domains in `app/domain/[domain name]/index.ts`. These APIs must cover all use cases of all features but must be as few as possible (no redundancy allowed).
+* **Route components** can only interact with domain objects/logics via the APIs and the interactions are allowed only in `loader/action/clientLoader/clientAction`.
+* Every codes in `app/domain` must be independent from any specific technologies used in application or storage, except for Repositories, which have to use specific storage.
+* Codes for app-layer or storage-layer (e.g., form input schema or database schema) can't be included in `app/domain`.
 
 When creating specifications, always define what the domain objects are, what the business logic is, and how they are connected to realize the functionality.
 
 ### VI. Schema validation with Zod
 
 * Every domain object and form input should be validated.
-* You must read `law/zod-law.md` first and strictly follow it.
 * Domain objects should be defined with Zod schema with strict constraints (including min/max, length etc, not only types) in `models.ts`. The types of them should also be defined as inferred types from Zod schema.
 * A form input should be defined in the route module it is used as a Zod schema.
 * Every schema validation should be built with Zod. No self-implementation is allowed.
