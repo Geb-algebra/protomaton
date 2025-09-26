@@ -20,7 +20,7 @@ Before you implement Application layer, you must read `law/react-router-law.md` 
 * Each domain object has a **Factory** (ensures correct type and defaults) in `lifecycle.ts`.
 * Each domain object has a **Repository** (static `get`, `save` only; no business logic) in `lifecycle.ts`.
 * **Services** go in `services.ts` as pure functions. They take domain objects, return updated copies, never mutate args, and never access storage. All services need unit tests. 
-* Services must not depend on UI (`app/feature/**`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
+* Services must not depend on UI (`app/features/**`) or storage (`app/domain/[domain name]/lifecycle.ts`). They must remain usable even if those layers are fully rewritten. Any UI- or storage-dependent functions should be colocated in the Route Module or lifecycle.ts.
 * Simple CRUD shouldn't be services. They should be acheved just by calling factories (C) and repositories `get` (R), `save` (U) and `delete`(D)
 * Each domain should have a set of APIs (as functions) exposed to applications and other domains in `app/domain/[domain name]/index.ts`. These APIs must cover all use cases of all features but must be as few as possible (no redundancy allowed).
 * **Route components** can only interact with domain objects/logics via the APIs and the interactions are allowed only in `loader/action/clientLoader/clientAction`.

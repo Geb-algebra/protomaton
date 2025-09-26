@@ -76,7 +76,7 @@ This is a standalone feature that doesn't integrate with existing systems.
 - [ ] **app/domain/task** - New - Task entity with models, lifecycle, and services for todo business logic
 
 ### Application Designs (app/)
-- [ ] **app/feature/todo** - New - Todo UI components including list view, detail page, forms, and task components
+- [ ] **app/features/todo** - New - Todo UI components including list view, detail page, forms, and task components
 
 ### Technical Decisions (docs/adr/)
 - [ ] **task-priority-enum.md** - New - Decision on priority values and implementation approach

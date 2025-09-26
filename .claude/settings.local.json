@@ -13,7 +13,8 @@
       "Bash(pnpm validate:*)",
       "Bash(pnpm test:unit:*)",
       "Bash(ls:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(./scripts/design-domain.sh:*)"
     ],
     "deny": []
   }
