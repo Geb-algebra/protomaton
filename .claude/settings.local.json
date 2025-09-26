@@ -1,18 +1,20 @@
 {
-	"permissions": {
-		"allow": [
-			"Bash(./scripts/kickoff.sh:*)",
-			"Bash(./scripts/specify.sh:*)",
-			"Bash(./scripts/design.sh:*)",
-			"Bash(./scripts/design-detail.sh:*)",
-			"Bash(pnpm dlx shadcn:latest add:*)",
-			"Bash(pnpm check:*)",
-			"Bash(pnpm typecheck:*)",
-			"Bash(pnpm typegen:*)",
-			"Bash(pnpm remove:*)",
-			"Bash(pnpm validate:*)",
-			"Bash(pnpm test:unit:*)"
-		],
-		"deny": []
-	}
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/kickoff.sh:*)",
+      "Bash(./scripts/specify.sh:*)",
+      "Bash(./scripts/design.sh:*)",
+      "Bash(./scripts/design-detail.sh:*)",
+      "Bash(pnpm dlx shadcn:latest add:*)",
+      "Bash(pnpm check:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm typegen:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm validate:*)",
+      "Bash(pnpm test:unit:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
 }
