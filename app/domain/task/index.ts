@@ -1,6 +1,8 @@
-export { Task, TaskId, TaskPriority, CreateTaskInput, UpdateTaskInput } from "./models";
+export type { CreateTaskInput, Task, TaskId, TaskPriority, UpdateTaskInput } from "./models";
 
-import { Task, TaskId, CreateTaskInput, UpdateTaskInput, CreateTaskInputSchema, UpdateTaskInputSchema } from "./models";
+import { TaskFactory, TaskRepository } from "./lifecycle";
+import type { CreateTaskInput, Task, TaskId, UpdateTaskInput } from "./models";
+import { CreateTaskInputSchema, UpdateTaskInputSchema } from "./models";
 import { toggleTaskCompletion, updateTaskWithValidation } from "./services";
 
 /**
@@ -12,17 +14,15 @@ import { toggleTaskCompletion, updateTaskWithValidation } from "./services";
  */
 export const createTask = (input: CreateTaskInput): Task => {
 	const validatedInput = CreateTaskInputSchema.parse(input);
-	const now = new Date();
-	
-	return {
-		id: crypto.randomUUID() as TaskId,
+
+	const task = TaskFactory.create({
 		name: validatedInput.name,
 		priority: validatedInput.priority,
 		dueDate: validatedInput.dueDate,
-		isCompleted: false,
-		createdAt: now,
-		modifiedAt: now,
-	};
+	});
+
+	TaskRepository.save(task);
+	return task;
 };
 
 /**
@@ -33,8 +33,7 @@ export const createTask = (input: CreateTaskInput): Task => {
  * **Usage Context**: When displaying the main task list view
  */
 export const getAllTasks = (): Task[] => {
-	// Implementation will be added in lifecycle phase
-	throw new Error("Not implemented - will be added in implementation phase");
+	return TaskRepository.get();
 };
 
 /**
@@ -45,8 +44,7 @@ export const getAllTasks = (): Task[] => {
  * **Usage Context**: When displaying task detail view or preparing for updates
  */
 export const getTaskById = (id: TaskId): Task | null => {
-	// Implementation will be added in lifecycle phase
-	throw new Error("Not implemented - will be added in implementation phase");
+	return TaskRepository.getById(id);
 };
 
 /**
@@ -58,9 +56,15 @@ export const getTaskById = (id: TaskId): Task | null => {
  */
 export const updateTask = (id: TaskId, updates: UpdateTaskInput): Task => {
 	const validatedUpdates = UpdateTaskInputSchema.parse(updates);
-	
-	// Implementation will use repository to get/save task
-	throw new Error("Not implemented - will be added in implementation phase");
+
+	const existingTask = TaskRepository.getById(id);
+	if (!existingTask) {
+		throw new Error(`Task with ID ${id} not found`);
+	}
+
+	const updatedTask = updateTaskWithValidation(existingTask, validatedUpdates);
+	TaskRepository.save(updatedTask);
+	return updatedTask;
 };
 
 /**
@@ -71,8 +75,14 @@ export const updateTask = (id: TaskId, updates: UpdateTaskInput): Task => {
  * **Usage Context**: When user marks task as done/undone in list or detail view
  */
 export const toggleTaskComplete = (id: TaskId, isCompleted: boolean): Task => {
-	// Implementation will use repository and toggleTaskCompletion service
-	throw new Error("Not implemented - will be added in implementation phase");
+	const existingTask = TaskRepository.getById(id);
+	if (!existingTask) {
+		throw new Error(`Task with ID ${id} not found`);
+	}
+
+	const updatedTask = toggleTaskCompletion(existingTask, isCompleted);
+	TaskRepository.save(updatedTask);
+	return updatedTask;
 };
 
 /**
@@ -83,6 +93,5 @@ export const toggleTaskComplete = (id: TaskId, isCompleted: boolean): Task => {
  * **Usage Context**: When user deletes a task they no longer need
  */
 export const deleteTask = (id: TaskId): void => {
-	// Implementation will be added in lifecycle phase
-	throw new Error("Not implemented - will be added in implementation phase");
+	TaskRepository.delete(id);
 };

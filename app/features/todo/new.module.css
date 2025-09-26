@@ -1,0 +1,99 @@
+.container {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"main";
+	grid-template-rows: auto 1fr;
+	gap: 2rem;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem 1rem;
+}
+
+.header {
+	grid-area: header;
+}
+
+.backLink {
+	display: inline-flex;
+	align-items: center;
+	color: #6b7280;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s ease;
+}
+
+.backLink:hover {
+	color: #2563eb;
+}
+
+.main {
+	grid-area: main;
+}
+
+.formCard {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.errorAlert {
+	margin-bottom: 1.5rem;
+}
+
+.form {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.field {
+	display: grid;
+	grid-template-areas:
+		"label"
+		"input";
+	gap: 0.5rem;
+}
+
+.field label {
+	grid-area: label;
+	font-weight: 500;
+}
+
+.field input,
+.field button {
+	grid-area: input;
+}
+
+.actions {
+	display: grid;
+	grid-template-areas: "primary secondary";
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	padding-top: 1rem;
+	border-top: 1px solid #e5e7eb;
+}
+
+.actions button:first-child {
+	grid-area: primary;
+}
+
+.actions a {
+	grid-area: secondary;
+}
+
+.actions a button {
+	width: 100%;
+}
+
+@media (max-width: 640px) {
+	.container {
+		padding: 1rem;
+	}
+
+	.actions {
+		grid-template-areas:
+			"primary"
+			"secondary";
+		grid-template-columns: 1fr;
+	}
+}

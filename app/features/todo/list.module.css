@@ -1,0 +1,157 @@
+.container {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"main";
+	grid-template-rows: auto 1fr;
+	gap: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem 1rem;
+}
+
+.header {
+	grid-area: header;
+	display: grid;
+	grid-template-areas: "title actions";
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 1rem;
+}
+
+.title {
+	grid-area: title;
+	font-size: 2rem;
+	font-weight: bold;
+	margin: 0;
+}
+
+.main {
+	grid-area: main;
+}
+
+.error {
+	padding: 1rem;
+	background-color: #fef2f2;
+	color: #dc2626;
+	border-radius: 0.5rem;
+	border: 1px solid #fecaca;
+}
+
+.emptyState {
+	display: grid;
+	grid-template-areas:
+		"message"
+		"action";
+	gap: 1.5rem;
+	justify-items: center;
+	text-align: center;
+	padding: 4rem 2rem;
+}
+
+.emptyState p {
+	grid-area: message;
+	color: #6b7280;
+	font-size: 1.125rem;
+}
+
+.taskList {
+	display: grid;
+	gap: 1rem;
+}
+
+.taskCard {
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.taskCard:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.taskContent {
+	display: grid;
+	grid-template-areas: "main actions";
+	grid-template-columns: 1fr auto;
+	gap: 1rem;
+	align-items: center;
+}
+
+.taskMain {
+	grid-area: main;
+	display: grid;
+	grid-template-areas:
+		"name"
+		"meta";
+	gap: 0.5rem;
+}
+
+.taskLink {
+	grid-area: name;
+	text-decoration: none;
+	color: inherit;
+}
+
+.taskLink:hover .taskName {
+	color: #2563eb;
+}
+
+.taskName {
+	grid-area: name;
+	font-size: 1.125rem;
+	font-weight: 600;
+	margin: 0;
+	transition: color 0.2s ease;
+}
+
+.taskMeta {
+	grid-area: meta;
+	display: grid;
+	grid-template-areas: "priority date";
+	grid-template-columns: auto 1fr;
+	gap: 1rem;
+	align-items: center;
+	font-size: 0.875rem;
+	color: #6b7280;
+}
+
+.dueDate {
+	grid-area: date;
+}
+
+.taskActions {
+	grid-area: actions;
+}
+
+.toggleForm {
+	display: contents;
+}
+
+@media (max-width: 768px) {
+	.header {
+		grid-template-areas:
+			"title"
+			"actions";
+		grid-template-columns: 1fr;
+		text-align: center;
+		gap: 1rem;
+	}
+
+	.taskContent {
+		grid-template-areas:
+			"main"
+			"actions";
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.taskMeta {
+		grid-template-areas:
+			"priority"
+			"date";
+		grid-template-columns: 1fr;
+		gap: 0.5rem;
+	}
+}

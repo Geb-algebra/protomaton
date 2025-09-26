@@ -1,4 +1,4 @@
-import { Task } from "./models";
+import type { Task } from "./models";
 
 /**
  * **Purpose**: Applies business rules when toggling task completion status
@@ -24,7 +24,7 @@ export const toggleTaskCompletion = (task: Task, isCompleted: boolean): Task => 
  */
 export const updateTaskWithValidation = (
 	originalTask: Task,
-	updates: Partial<Pick<Task, "name" | "priority" | "dueDate" | "isCompleted">>
+	updates: Partial<Pick<Task, "name" | "priority" | "dueDate" | "isCompleted">>,
 ): Task => {
 	const hasChanges = Object.keys(updates).length > 0;
 	if (!hasChanges) {
