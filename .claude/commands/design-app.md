@@ -9,7 +9,7 @@ NEVER implement bodies of Route Modules. You can update ONLY comments.
 ## Process
 1. **Read context**: Review the current change history in `/docs/changes` and specifications in `/app/features/[feature name]/spec.md` specified by the change history. if specifications do not exist,  ERROR "No feature spec provided"
 2. **Create/update basic designs**: For each design area mentioned:
-   - Run `./scripts/design-app.sh [type] [name]` to create from template if needed. name must be same as what specified in the change history.
+   - Run `./scripts/design-app.sh [name]` to create from template if needed. name must be same as what specified in the change history.
    - Fill in / update the template following the "Execution Flow" section in the basic architecture documents following the guidelines below
 3. **Technology research**: If new technologies are needed, research and document choices
 4. **Create/update detailed designs**: When complex decisions need documentation:

@@ -2,6 +2,9 @@
 
 This guide strictly defines how to and not to implement applications under React Router.
 
+read `./react-router-general-rules.md` before this for more general instructions.
+this document is project-specific rules and prioritized over `./react-router-general-rules.md`
+
 ## Terms
 
 This section defines terms we use in the remainder of this document.
@@ -88,27 +91,27 @@ export function meta({}: Route.MetaArgs) {
 
 // omit if no server data
 export async function loader({ request }: Route.LoaderArgs) {
-    // load data from server repositories
+    // load server data via domain API
 }
 
 // omit if no client data
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-    // load data from client repositories
+    // load client data via domain API
 }
 
 // omit if no server data updates
 export async function action({ request }: Route.ActionArgs) {
-    // parse and validate formData and update server data.
+    // parse and validate formData and update server data via domain API.
 }
 
 // omit if no client data updates
 export async function clientAction({ request }: Route.ClientActionArgs) {
-    // parse and validate formData and update client data.
+    // parse and validate formData and update client data via domain API.
 }
 
 export default function Page({ loaderData, actionData, clientLoaderData, clientActionData }: Route.ComponentProps) {
     // render pages using loaderData, actionData, clientLoaderData, clientActionData
-    // Direct use of client repositories are prohibited
+    // Direct use of domain API are prohibited
 }
 ```
 
@@ -129,22 +132,22 @@ import type { Route } from "./+types/sample-resource-route";
 
 // omit if no server data
 export async function loader({ request }: Route.LoaderArgs) {
-    // load data from server repositories
+    // load server data via domain API
 }
 
 // omit if no client data
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-    // load data from client repositories
+    // load client data via domain API
 }
 
 // omit if no server data updates
 export async function action({ request }: Route.ActionArgs) {
-    // parse and validate formData and update server data.
+    // parse and validate formData and update server data via domain API.
 }
 
 // omit if no client data updates
 export async function clientAction({ request }: Route.ClientActionArgs) {
-    // parse and validate formData and update client data.
+    // parse and validate formData and update client data via domain API.
 }
 ```
 
@@ -182,22 +185,22 @@ import type { Route } from "./+types/sample-resource-route";
 
 // omit if no server data
 export async function loader({ request }: Route.LoaderArgs) {
-    // load data from server repositories
+    // load server data via domain API
 }
 
 // omit if no client data
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-    // load data from client repositories
+    // load client data via domain API
 }
 
 // omit if no server data updates
 export async function action({ request }: Route.ActionArgs) {
-    // parse and validate formData and update server data.
+    // parse and validate formData and update server data via domain API.
 }
 
 // omit if no client data updates
 export async function clientAction({ request }: Route.ClientActionArgs) {
-    // parse and validate formData and update client data.
+    // parse and validate formData and update client data via domain API.
 }
 
 export function Component(props) {

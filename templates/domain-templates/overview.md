@@ -17,6 +17,7 @@
 5. Identify complex business logic (skip simple CRUD) and define or update them in ./services.ts as unimplemented functions
    → Focus on calculations, constraints, workflows
 6. Define or update exposed APIs for use by other domains and the application in ./index.ts as unimplemented functions so that they cover all of the acceptance scenarios in the specifications.
+7. Minimize APIs by removing redundant ones, eliminating those unnecessary for acceptance scenarios, merging APIs, or using other consolidation methods without losing acceptance scenarios coverage.
 8. Expose types (imported from ./models.ts into ./index.ts) required for use by other domains and the application from ./index.ts
 9. Run Constitution compliance checklist. DO NOT edit the checklist items or add your own.
    → If violations found: ERROR "Fix constitution compliance"

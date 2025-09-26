@@ -9,10 +9,10 @@
 // import { ExampleRepository } from "./lifecycle";
 //
 // /**
-//  * **Purpose**: [What business capability this provides to other domains]  
-//  * **Inputs**: [Required parameters and types]  
-//  * **Operation**: [What domain objects/services this combines]  
-//  * **Outputs**: [Return values and types]  
+//  * **Purpose**: [What business capability this provides to other domains]
+//  * **Inputs**: [Required parameters and types]
+//  * **Operation**: [What domain objects/services this combines]
+//  * **Outputs**: [Return values and types]
 //  * **Usage Context**: [When other domains or app layers would use this]
 //  */
 // export const ExampleAPI = (input: ExampleInput): ExampleOutput => {
